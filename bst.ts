@@ -1,5 +1,5 @@
 // Binary Search Tree Implementation
-export class BSTNode {
+class BSTNode {
   value: number;
   left: BSTNode | null;
   right: BSTNode | null;
@@ -11,7 +11,7 @@ export class BSTNode {
   }
 }
 
-export class BST {
+class BST {
   root: BSTNode | null;
 
   constructor() {
@@ -46,22 +46,18 @@ export class BST {
     }
   }
 
-  containsNode(node: BSTNode | null, value: number): boolean {
+  // EASY: Check if a value exists in the BST
+  contains(value: number, node = this.root): boolean {
+    // TODO: Implement contains method
     if (node === null) {
       return false;
     } else if (value < node.value) {
-      return this.containsNode(node.left, value);
+      return this.contains(value, node.left);
     } else if (value > node.value) {
-      return this.containsNode(node.right, value);
+      return this.contains(value, node.right);
     } else {
       return true;
     }
-  }
-
-  // EASY: Check if a value exists in the BST
-  contains(value: number): boolean {
-    // TODO: Implement contains method
-    return this.containsNode(this.root, value);
   }
 
   // MEDIUM: Find the minimum value in the BST
